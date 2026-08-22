@@ -4,15 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import {PROJECTS} from "@/utils/projects"
 
-const PROJECTS = [
-  { id: 1, src: "/agrimar.png", title: "Growth Engine", category: "Web Development", date: "August 23, 2025", desc: "Al-powered sensors reduced downtown traffic congestion by 35% weekly.", github: "#", live: "#" },
-  { id: 2, src: "/court.png", title: "Cyber Matrix", category: "Web Development", date: "August 23, 2025", desc: "Boosted online sales 200% with lightning-fast, mobile-friendly checkout flows.", github: "#", live: "#" },
-  { id: 3, src: "/every.png", title: "Vector Design", category: "UI/UX Design", date: "August 23, 2025", desc: "Designed intuitive dashboard components for real-time telemetry tracking.", github: "#", live: "#" },
-  { id: 4, src: "/fisum.png", title: "Aura UI", category: "Web Development", date: "August 23, 2025", desc: "Modern frontend architecture built for scalable SaaS platforms.", github: "#", live: "#" },
-  { id: 5, src: "/kidslearn.png", title: "Data Stream", category: "EdTech", date: "August 23, 2025", desc: "Interactive learning platform for young minds with real-time feedback.", github: "#", live: "#" },
-  { id: 6, src: "/medFinder.png", title: "Neural Net", category: "Healthcare AI", date: "August 23, 2025", desc: "Streamlined medical search matching patients with regional specialists.", github: "#", live: "#" },
-];
 
 export default function MyProjects() {
   const targetRef = useRef(null);
@@ -24,10 +17,10 @@ export default function MyProjects() {
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-78%"]);
 
   return (
-    <section ref={targetRef} className="relative h-[300vh] bg-[#f8f7f3] text-black">
+    <section ref={targetRef} className="relative font-poppins h-[300vh] bg-[#f8f7f3] text-black">
       <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden py-8">
         
-        <div className="text-center font-poppins mb-10 uppercase font-extrabold tracking-tight text-4xl md:text-7xl shrink-0 px-4">
+        <div className="text-center  mb-10 uppercase font-extrabold tracking-tight text-4xl md:text-7xl shrink-0 px-4">
           <h2 className="text-black">
             THINGS I SOMEHOW MADE<br />
             WORK

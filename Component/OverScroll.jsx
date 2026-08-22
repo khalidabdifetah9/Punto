@@ -10,7 +10,7 @@ export default function OverScroll() {
       <MyImage src="/kalid.jpg" />
       <div className="relative z-10 mt-[-100vh] bg-black min-h-screen w-full rounded-t-3xl shadow-2xl">
           <AboutMe />
-          <div className="h-[0.6px] w-full my-35 bg-[#e5192a]/50"/>
+          <div className="h-[0.6px] w-full my-20 bg-[#e5192a]/50"/>
           <Skills/>
           <MyProjects/>
           <ImageReveal/>

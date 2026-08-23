@@ -41,12 +41,14 @@ export default function MyProjects() {
                     sizes="(max-width: 640px) 85vw, (max-width: 768px) 90vw, 100vw"
                     priority={index === 0}
                     unoptimized
-                    className="object-cover transition-transform duration-500 [@media(hover:hover)_and_(display-mode:fullscreen)]:group-hover:scale-105"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
 
-                  <div className="absolute inset-0 bg-black/25 z-0 transition-colors duration-300 [@media(hover:hover)_and_(display-mode:fullscreen)]:group-hover:bg-black/50" />
+                  {/* Dark overlay: hidden by default, visible on hover */}
+                  <div className="absolute inset-0 bg-black/25 opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-0" />
 
-                  <div className="absolute inset-0 flex items-center justify-center gap-6 sm:gap-12 z-10 [@media(hover:hover)_and_(display-mode:fullscreen)]:opacity-0 [@media(hover:hover)_and_(display-mode:fullscreen)]:transition-opacity [@media(hover:hover)_and_(display-mode:fullscreen)]:duration-300 [@media(hover:hover)_and_(display-mode:fullscreen)]:group-hover:opacity-100">
+                  {/* Buttons container: hidden by default, visible on hover */}
+                  <div className="absolute inset-0 flex items-center justify-center gap-6 sm:gap-12 z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <Link
                       href={project.github || "#"}
                       className="bg-white text-black flex items-center rounded-sm text-center text-xs sm:text-sm md:text-xl font-poppins px-4 py-2 md:px-8 md:py-3 font-semibold"

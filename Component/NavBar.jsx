@@ -2,21 +2,42 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { navLinks } from "@/utils/navLinks";
+import { motion } from "framer-motion";
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <nav className="w-full text-white px-6 sm:px-12 md:px-18 left-0 py-6 sm:py-8 md:py-12 flex justify-between items-center fixed z-50">
-      <Link 
-        href="/" 
-        className="text-3xl sm:text-4xl md:text-5xl text-zinc-400 font-bold tracking-tight"
+      <motion.div
+        key={`logo-${pathname}`}
+        initial={{ y: -120, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ 
+          duration: 1.4, 
+          ease: [0.22, 1, 0.36, 1] 
+        }}
       >
-        Punt<span className="text-[#e5192a]">o</span>
-      </Link>
+        <Link 
+          href="/" 
+          className="text-3xl sm:text-4xl md:text-5xl text-zinc-400 font-bold tracking-tight"
+        >
+          Punt<span className="text-[#e5192a]">o</span>
+        </Link>
+      </motion.div>
 
-      <button
+      <motion.button
+        key={`button-${pathname}`}
+        initial={{ y: -120, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ 
+          duration: 1.4, 
+          ease: [0.22, 1, 0.36, 1], 
+          delay: 0.15 
+        }}
         onClick={() => setIsOpen(!isOpen)}
         className="flex flex-col justify-center items-end gap-1.5 sm:gap-2 group p-2 focus:outline-none cursor-pointer z-50"
         aria-label="Toggle Menu"
@@ -35,7 +56,7 @@ export default function NavBar() {
               : "w-12 sm:w-16 md:w-20 group-hover:w-8 sm:group-hover:w-10"
           }`}
         />
-      </button>
+      </motion.button>
 
       {isOpen && (
         <div className="absolute top-full right-4 sm:right-8 mt-2 w-[calc(100vw-2rem)] sm:w-96 md:w-[500px] justify-center bg-[#141414]/95 border border-zinc-800 px-6 sm:px-8 py-8 sm:py-12 flex flex-col gap-6 sm:gap-8 text-xl sm:text-2xl rounded-lg shadow-2xl backdrop-blur-md">

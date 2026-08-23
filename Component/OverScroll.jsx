@@ -16,7 +16,7 @@ export default function OverScroll() {
           <ImageReveal/>
       </div>
           <Footer/>
-          <div className="w-full h-110 bg-[#e5192a]"/>
+          <div className="w-full text-black font-poppins items-center h-110 bg-[#e5192a]"/>
     </main>
   );
 }

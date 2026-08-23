@@ -2,16 +2,16 @@ export const skillsData = [
   {
     title: "Frontend Development",
     description:
-      "Crafting pixel-perfect, responsive, and intuitive user interfaces using modern frameworks like React and Next.js, focusing on performance, accessibility, and smooth user interactions.",
+      "Making pixels behave. everything looks good on a 4K monitor, a phone with a cracked screen, and everything in between. I also make buttons actually feel like buttons.",
   },
   {
     title: "Backend Integration & APIs",
     description:
-      "Architecting robust server-side logic, database schemas, and REST/GraphQL APIs that seamlessly power frontend applications with speed and security.",
+      "Basically, I make sure clicking a button does something more useful than just looking pretty.",
   },
   {
     title: "UI/UX & Interactive Design",
     description:
-      "Balancing aesthetics and functionality to create thoughtful digital experiences that resonate deeply, prioritizing clean typography, fluid animations, and human-centered design.",
+      "Because good UX should be like a good joke you shouldn't have to explain it. I make websites so easy to use that even my dad could navigate them. Probably.",
   },
 ];

@@ -2,32 +2,60 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { PROJECTS } from "@/utils/projects";
 
 export default function MyProjects() {
   const targetRef = useRef(null);
+  const trackRef = useRef(null);
+
+  const [distance, setDistance] = useState(0);
+
+  useEffect(() => {
+    const calculate = () => {
+      if (trackRef.current) {
+        // total scrollable distance = track width - viewport width
+        const trackWidth = trackRef.current.scrollWidth;
+        const viewportWidth = window.innerWidth;
+        setDistance(trackWidth - viewportWidth);
+      }
+    };
+
+    calculate();
+    window.addEventListener("resize", calculate);
+    // recalc after images/layout settle
+    const timeout = setTimeout(calculate, 300);
+
+    return () => {
+      window.removeEventListener("resize", calculate);
+      clearTimeout(timeout);
+    };
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: targetRef,
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-78%"]);
+  // translate by the actual pixel distance needed, not a guessed %
+  const x = useTransform(scrollYProgress, [0, 1], [0, -distance]);
 
   return (
-    <section ref={targetRef} className="relative font-poppins h-[300vh] bg-[#f8f7f3] text-black">
+    <section
+      ref={targetRef}
+      className="relative font-poppins h-[300vh] bg-[#f8f7f3] text-black"
+    >
       <div className="sticky top-0 flex min-h-screen flex-col justify-center overflow-hidden pt-32 pb-8 md:pt-16 md:py-8">
-        
         <div className="text-center mb-6 md:mb-10 uppercase font-extrabold tracking-tight text-3xl sm:text-4xl md:text-7xl shrink-0 px-4">
           <h2 className="text-black">
-            THINGS I SOMEHOW MADE<br />
+            THINGS I SOMEHOW MADE
+            <br />
             WORK
           </h2>
         </div>
 
         <div className="w-full overflow-hidden px-4 md:px-16">
-          <motion.div style={{ x }} className="flex gap-6 md:gap-8">
+          <motion.div ref={trackRef} style={{ x }} className="flex gap-6 md:gap-8">
             {PROJECTS.map((project, index) => (
               <div
                 key={project.id || index}
@@ -44,10 +72,8 @@ export default function MyProjects() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
 
-                  {/* Dark overlay: hidden by default, visible on hover */}
                   <div className="absolute inset-0 bg-black/25 opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-0" />
 
-                  {/* Buttons container: hidden by default, visible on hover */}
                   <div className="absolute inset-0 flex items-center justify-center gap-6 sm:gap-12 z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <Link
                       href={project.github || "#"}

@@ -6,7 +6,6 @@ import { PROJECTS } from "@/utils/projects";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-// Framer Motion Animation Variants
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -132,7 +131,7 @@ const Projects = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
-        className="grid w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 py-10 sm:py-20 md:py-40 max-w-480 mx-auto min-h-screen gap-6 sm:gap-8 md:gap-12"
+        className="grid w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 py-10 sm:py-20 md:py-40 max-w-434 mx-auto min-h-screen gap-6 sm:gap-8 md:gap-12"
       >
         {PROJECTS.map((project) => (
           <GlitchCard key={project.id} project={project} />
